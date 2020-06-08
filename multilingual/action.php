@@ -36,7 +36,7 @@ class action_plugin_multilingual extends DokuWiki_Action_Plugin {
     /**
      * Register the events
      */
-    function register(&$controller) {
+    function register(Doku_Event_Handler $controller) {
         if($this->getConf('start_redirect')) {
             $controller->register_hook('ACTION_ACT_PREPROCESS', 'BEFORE', $this, 'multilingual_start');
 	}
@@ -59,7 +59,7 @@ class action_plugin_multilingual extends DokuWiki_Action_Plugin {
     /**
      * Change the UI language depending on your browser's current selection.
      */
-    function multilingual_ui(&$event, $args) {
+    function multilingual_ui(Doku_Event $event, $args) {
         global $ID;
         global $lang;
         global $conf;
